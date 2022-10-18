@@ -12,6 +12,7 @@ export const StyledInputArea = styled.div`
   height: 40px;
 
   .selection {
+    padding: 0 5px 0 5px;
     display: block;
     width: 80%;
     overflow: none;
@@ -20,6 +21,7 @@ export const StyledInputArea = styled.div`
   }
 
   .control {
+    padding: 0 2px 0 2px;
     display: block;
     width: 20%;
   }

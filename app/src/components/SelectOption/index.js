@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { StyledDropdown, StyledInputArea } from "./styles";
-import Icon from "../Icon";
+import { Arrow, Close } from "../assets/icons/Icons";
 
 const SelectOption = (data, onChangeHandler, onSelectHandler) => {
   const [menuData, setMenuData] = useState([]);
@@ -21,12 +21,11 @@ const SelectOption = (data, onChangeHandler, onSelectHandler) => {
   return (
     <>
       <StyledInputArea>
-        <div className="selection">{selectedItem}</div>
-        <div>
-          <Icon name={"close"} fill={"black"} size={24} />
-        </div>
+        <span className="selection">This is an input</span>
+        <span className="control">
+          <Arrow />
+        </span>
       </StyledInputArea>
-      <Icon name={"close"} fill={"black"} size={24} />
       <StyledDropdown>
         <div className="primary boxShadow">This is the dropdown</div>
       </StyledDropdown>
