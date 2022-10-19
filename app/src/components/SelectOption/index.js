@@ -2,34 +2,61 @@
 
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { StyledDropdown, StyledInputArea } from "./styles";
+import { SelectOptionWrapper, StyledInputArea } from "./styles";
 import { Arrow, Close } from "../assets/icons/Icons";
+import DropDownMenu from "./DropDownMenu";
 
-const SelectOption = (data, onChangeHandler, onSelectHandler) => {
+const SelectOption = ({ data, onChangeHandler }) => {
   const [menuData, setMenuData] = useState([]);
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     setMenuData(data);
+    console.log(data);
   }, [data]);
 
-  const handleSelectionChange = (e, value) => {
+  const handleSelectionChange = (value) => {
     setSelectedItem(value);
     onChangeHandler(value);
+    setMenuVisible(false); // close the menu on select
+  };
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
+
+  const clearSelection = () => {
+    setSelectedItem(null);
+    setMenuVisible(false);
+    onChangeHandler(null);
   };
 
   return (
-    <>
+    <SelectOptionWrapper>
       <StyledInputArea>
-        <span className="selection">This is an input</span>
-        <span className="control">
+        <span className="selection">{selectedItem?.title ?? ""}</span>
+        {selectedItem !== null && (
+          <span className="control" onClick={clearSelection}>
+            <Close />
+          </span>
+        )}
+        <span
+          className="control"
+          style={{ transform: menuVisible ? "rotate(180deg)" : "rotate(0deg)" }}
+          onClick={toggleMenu}
+        >
           <Arrow />
         </span>
       </StyledInputArea>
-      <StyledDropdown>
-        <div className="primary boxShadow">This is the dropdown</div>
-      </StyledDropdown>
-    </>
+      {menuVisible && (
+        <DropDownMenu
+          listItems={menuData}
+          onSelectHandler={handleSelectionChange}
+          id={selectedItem?.id ?? null}
+        />
+      )}
+    </SelectOptionWrapper>
   );
 };
 
