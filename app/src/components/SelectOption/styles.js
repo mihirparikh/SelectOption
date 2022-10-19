@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SelectOptionWrapper = styled.div`
-  font-family: "Poppins", serif;
+  font-family: "Poppins", sans-serif;
 `;
 
 export const StyledInputArea = styled.div`
