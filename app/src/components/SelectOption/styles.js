@@ -17,12 +17,13 @@ export const StyledInputArea = styled.div`
   height: 40px;
 
   .selection {
-    padding: 0 5px 0 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     display: block;
     width: 80%;
-    overflow: none;
-    text-overfow: ellipsis;
     color: black;
+    padding: 0 5px 0 5px;
   }
 
   .control {
@@ -56,10 +57,13 @@ export const StyledDropdown = styled.div`
   }
 
   li {
-    margin: 2px 0 2px 0;
+    margin: 4px 0 4px 0;
   }
 
   li span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     padding: 0 10px 0 10px;
   }
 

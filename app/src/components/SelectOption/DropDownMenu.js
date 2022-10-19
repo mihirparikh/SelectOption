@@ -28,7 +28,15 @@ const DropDownMenu = ({ listItems, onSelectHandler, id = null }) => {
             }}
             key={idx}
           >
-            <span>{item.title ?? ""}</span>
+            <span
+              style={{
+                overflow: "hidden",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {item.title ?? ""}
+            </span>
           </li>
         ))}
       </ul>
